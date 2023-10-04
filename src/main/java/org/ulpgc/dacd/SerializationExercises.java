@@ -147,7 +147,7 @@ public class SerializationExercises {
             fileInputStream = new FileInputStream("movie2.txt");
             objectInputStream = new ObjectInputStream(fileInputStream);
             movie2 = (Movie) objectInputStream.readObject();
-            objectInputStream.close();
+            objectInputStream.close();/
         }
     }
 }
