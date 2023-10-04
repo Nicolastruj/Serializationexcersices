@@ -87,6 +87,7 @@ public class SerializationExercises {
             fileOutputStream = new FileOutputStream("session1.txt");
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(session1);
+            objectOutputStream.flush();
             objectOutputStream.close();
             fileOutputStream = new FileOutputStream("session2.txt");
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
