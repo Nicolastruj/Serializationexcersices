@@ -121,9 +121,33 @@ public class SerializationExercises {
        Deserialize the objects from the binary files created in exercise 2.
     */
     public static class Exercise3 {
-
-        public static void main(String[] args) {
-
+        private static FileInputStream fileInputStream;
+        private static ObjectInputStream objectInputStream;
+        public static void main(String[] args) throws IOException, ClassNotFoundException{
+            fileInputStream = new FileInputStream("session1.txt");
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            session1 = (Session) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream = new FileInputStream("session2.txt");
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            session2 = (Session) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream = new FileInputStream("theater1.txt");
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            theater1 = (Theater) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream = new FileInputStream("theater2.txt");
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            theater2 = (Theater) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream = new FileInputStream("movie1.txt");
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            movie1 = (Movie) objectInputStream.readObject();
+            objectInputStream.close();
+            fileInputStream = new FileInputStream("movie2.txt");
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            movie2 = (Movie) objectInputStream.readObject();
+            objectInputStream.close();
         }
     }
 }
