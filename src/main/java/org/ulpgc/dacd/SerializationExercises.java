@@ -14,6 +14,12 @@ public class SerializationExercises {
     private static String jsonTheater2;
     private static String jsonMovie1;
     private static String jsonMovie2;
+    private static Session session1;
+    private static Session session2;
+    private static Theater theater1;
+    private static Theater theater2;
+    private static Movie movie1;
+    private static Movie movie2;
     public static class Exercise1 {
         private static Gson gson1 = new Gson();
         public static void main(String[] args) throws IOException {
@@ -70,17 +76,41 @@ public class SerializationExercises {
     public static class Exercise2 {
         private static FileOutputStream fileOutputStream;
         private static ObjectOutputStream objectOutputStream;
-
-        public static void main(String[] args) {
-            Session session1 = gson1.fromJson(jsonSession1, Session.class);
-            Session session2 = gson1.fromJson(jsonSession2, Session.class);
-            Theater theater1 = gson1.fromJson(jsonTheater1, Theater.class);
-            Theater theater2 = gson1.fromJson(jsonTheater2, Theater.class);
-            Movie movie1 = gson1.fromJson(jsonMovie1, Movie.class);
-            Movie movie2 = gson1.fromJson(jsonMovie2, Movie.class);
+        private static Gson gson2 = new Gson();
+        public static void main(String[] args) throws IOException{
+            session1 = gson2.fromJson(jsonSession1, Session.class);
+            session2 = gson2.fromJson(jsonSession2, Session.class);
+            theater1 = gson2.fromJson(jsonTheater1, Theater.class);
+            theater2 = gson2.fromJson(jsonTheater2, Theater.class);
+            movie1 = gson2.fromJson(jsonMovie1, Movie.class);
+            movie2 = gson2.fromJson(jsonMovie2, Movie.class);
             fileOutputStream = new FileOutputStream("session1.txt");
             objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(Session);
+            objectOutputStream.writeObject(session1);
+            objectOutputStream.close();
+            fileOutputStream = new FileOutputStream("session2.txt");
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(session2);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream = new FileOutputStream("theater1.txt");
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(theater1);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream = new FileOutputStream("theater2.txt");
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(theater2);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream = new FileOutputStream("movie1.txt");
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(movie1);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            fileOutputStream = new FileOutputStream("movie2.txt");
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(movie2);
             objectOutputStream.flush();
             objectOutputStream.close();
         }
