@@ -5,12 +5,9 @@ import org.ulpgc.dacd.model.Movie;
 import org.ulpgc.dacd.model.Session;
 import org.ulpgc.dacd.model.Theater;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class SerializationExercises {
-    private static Gson gson1 = new Gson();
     private static String jsonSession1;
     private static String jsonSession2;
     private static String jsonTheater1;
@@ -18,6 +15,7 @@ public class SerializationExercises {
     private static String jsonMovie1;
     private static String jsonMovie2;
     public static class Exercise1 {
+        private static Gson gson1 = new Gson();
         public static void main(String[] args) throws IOException {
             Movie film1 = new Movie("Interestelar");
             Movie film2 = new Movie("Gravity");
@@ -70,6 +68,8 @@ public class SerializationExercises {
         Now serialize them using ObjectOutputStream
      */
     public static class Exercise2 {
+        private static FileOutputStream fileOutputStream;
+        private static ObjectOutputStream objectOutputStream;
 
         public static void main(String[] args) {
             Session session1 = gson1.fromJson(jsonSession1, Session.class);
@@ -78,6 +78,11 @@ public class SerializationExercises {
             Theater theater2 = gson1.fromJson(jsonTheater2, Theater.class);
             Movie movie1 = gson1.fromJson(jsonMovie1, Movie.class);
             Movie movie2 = gson1.fromJson(jsonMovie2, Movie.class);
+            fileOutputStream = new FileOutputStream("session1.txt");
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(Session);
+            objectOutputStream.flush();
+            objectOutputStream.close();
         }
     }
 
